@@ -1,18 +1,13 @@
 <?php namespace App\Http\Controllers\Data;
 
-use App\Data\CoreFields;
+use App\Data\CoreField;
 use App\Http\Controllers\Controller;
 
 class FieldController extends Controller
 {
-    public function __construct()
+    public function index()
     {
-        $this->middleware('auth');
-    }
-
-    public function index($table)
-    {
-        return CoreFields::where('table_id', $table)->get();
+        return CoreField::all();
     }
 
 }

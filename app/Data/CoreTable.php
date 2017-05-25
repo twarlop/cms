@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class CoreTables extends Model
+class CoreTable extends Model
 {
     protected $table = 'core_data_tables';
 

@@ -3,11 +3,15 @@ export default [
     {
         path: '/admin/data',
         name: 'data',
-        component: require('./../components/Data/Tables.vue')
-    },
+        component: require('./../components/Data/Tables.vue'),
 
-    {
-        path: '/admin/data/fields'
-    }
+        children: [
+            {
+                path: '/admin/data/:id/fields',
+                name: 'fields',
+                component: require('./../components/Data/Fields.vue')
+            },
+        ]
+    },
 
 ];

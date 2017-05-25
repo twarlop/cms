@@ -23,4 +23,6 @@ Route::group([
 ], function()
 {
     Route::resource('table-group', 'TableGroupController');
+    Route::resource('table', 'TableController');
+    Route::resource('field', 'FieldController');
 });

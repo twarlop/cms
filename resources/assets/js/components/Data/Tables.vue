@@ -7,11 +7,13 @@
 			<h2 @click="editGroup(group)">{{ group.group_name }}</h2>
 
 			<ul>
-				<li v-for="table in group.tables">{{ table.table_name }}</li>
+				<li v-for="table in tablesByGroup(group)"><router-link :to="{name: 'fields', params:{id: table.id}}">{{ table.table_name }}</router-link></li>
 			</ul>
 		</div>
 
 		<table-group ref="groupEditor"></table-group>
+
+		<router-view></router-view>
 
 	</div>
 
@@ -20,6 +22,7 @@
 <script>
 
     import Vue from "vue";
+    import {mapGetters} from "vuex";
 
     import tableGroup from "./TableGroup.vue";
 
@@ -32,37 +35,14 @@
         data()
         {
             return {
-
-                groups: [
-	                {
-	                    id: 1,
-	                    group_name: 'group a',
-		                tables: [
-			                {
-			                    table_name: 'table a',
-			                },
-                            {
-                                table_name: 'table b',
-                            }
-		                ]
-	                },
-	                {
-                        id: 2,
-                        group_name: 'group b',
-                        tables: [
-                            {
-                                table_name: 'table a',
-                            },
-                            {
-                                table_name: 'table b',
-                            }
-                        ]
-	                }
-                ],
-
 	            editingGroup: false,
             }
         },
+
+		computed: Object.assign({}, mapGetters('data', [
+            'groups',
+			'tablesByGroup'
+        ])),
 
         methods: {
 	        editGroup(group)
@@ -70,11 +50,6 @@
 		        this.$refs.groupEditor.edit(group);
 	        }
         },
-
-	    mounted()
-	    {
-
-	    }
 
     });
 

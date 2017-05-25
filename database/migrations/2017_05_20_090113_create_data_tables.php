@@ -13,7 +13,7 @@ class CreateDataTables extends Migration
      */
     public function up()
     {
-        Schema::create('core_data_tables_group', function(Blueprint $table){
+        Schema::create('core_data_table_groups', function(Blueprint $table){
             $table->increments('id');
             $table->string('group_name');
             $table->unique('group_name');
@@ -25,7 +25,7 @@ class CreateDataTables extends Migration
             $table->integer('group_id', false, true)->nullable();
             $table->foreign('group_id', 'core_table_to_group')
                 ->references('id')
-                ->on('core_data_tables_group')
+                ->on('core_data_table_groups')
                 ->onDelete('set null');
 
             $table->string('table_name');
@@ -62,6 +62,6 @@ class CreateDataTables extends Migration
     {
         Schema::drop('core_data_fields');
         Schema::drop('core_data_tables');
-        Schema::drop('core_data_tables_group');
+        Schema::drop('core_data_table_groups');
     }
 }

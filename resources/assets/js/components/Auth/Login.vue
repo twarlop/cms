@@ -55,8 +55,7 @@
             {
                 this.form.submit('/login')
                     .then(({data}) => {
-                        this.$store.commit('auth/login', {user: data});
-                        this.$router.push({name: 'home'});
+                        window.location ='/admin';
                     })
                     .catch(() => {})
             }

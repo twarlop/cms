@@ -64,10 +64,11 @@ window.Vue = new Vue({
 
     created()
     {
-        console.log('in created');
-
         let loaders = [
             this.$store.dispatch('auth/CHECK_AUTHENTICATION').catch(() => {}),
+            this.$store.dispatch('data/LOAD_GROUPS').catch(() => {}),
+            this.$store.dispatch('data/LOAD_TABLES').catch(() => {}),
+            this.$store.dispatch('data/LOAD_FIELDS').catch(() => {}),
         ];
 
         Promise.all(loaders).then(() => {

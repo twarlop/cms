@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class CoreFields extends Model
+class CoreField extends Model
 {
     protected $table = 'core_data_fields';
 
