@@ -1,3 +1,5 @@
+import store from "../store";
+
 export default [
 
     {
@@ -9,7 +11,12 @@ export default [
             {
                 path: '/admin/data/:id/fields',
                 name: 'fields',
-                component: require('./../components/Data/Fields.vue')
+                component: require('./../components/Data/Fields.vue'),
+                props: (route) => {
+                    return {
+                        table: store.getters['data/tableById'](_.toInteger(route.params.id)),
+                    }
+                },
             },
         ]
     },

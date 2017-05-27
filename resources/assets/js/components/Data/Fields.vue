@@ -4,7 +4,7 @@
 
 		<ul>
 
-			<li v-for="field in fieldsByTable(tableById($route.params.id))">{{ field.field_name }}</li>
+			<li v-for="field in fieldsByTable(table.id)">{{ field.field_name }}</li>
 
 		</ul>
 
@@ -20,15 +20,16 @@
 	import {mapGetters} from "vuex";
 
 	export default {
+	    props: {
+	        table: {
+	            required: true,
+				type: Object
+			}
+		},
 		computed: mapGetters('data', [
 		    'fieldsByTable',
 			'tableById',
 		]),
-
-		ready()
-		{
-		    return this.$route.curr
-		}
 	}
 
 </script>
