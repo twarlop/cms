@@ -15,6 +15,10 @@ export default {
         user(state)
         {
             return state.user;
+        },
+        authenticated(state)
+        {
+            return state.user.id;
         }
     },
 

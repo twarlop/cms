@@ -66,7 +66,7 @@ const actions = {
 
     LOAD_GROUPS({commit})
     {
-        axios('/api/data/table-group').then(({data}) => {
+        return axios('/api/data/table-group').then(({data}) => {
             commit('RECEIVE_GROUPS', {
                 groups: data
             })
@@ -75,7 +75,7 @@ const actions = {
 
     LOAD_TABLES({commit})
     {
-        axios('/api/data/table').then(({data}) => {
+        return axios('/api/data/table').then(({data}) => {
             commit('RECEIVE_TABLES', {
                 tables: data
             })
@@ -84,7 +84,7 @@ const actions = {
 
     LOAD_FIELDS({commit})
     {
-        axios('/api/data/field').then(({data}) => {
+        return axios('/api/data/field').then(({data}) => {
             commit('RECEIVE_FIELDS', {
                 fields: data
             })
