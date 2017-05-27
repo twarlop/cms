@@ -6,6 +6,10 @@
 import jquery from "jquery";
 window.$ = jquery;
 
+
+import _ from "lodash";
+window._ = _;
+
 /**
  * setup our ui kit
  */
