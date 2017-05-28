@@ -9,7 +9,7 @@
 
 				<ul class="uk-nav uk-nav-default">
 					<li v-for="table in tablesByGroup(group)">
-						<router-link :to="{name: 'fields', params:{id: table.id}}">{{ table.table_name }}</router-link>
+						<router-link :to="{name: 'fields', params:{table: table.id}}">{{ table.table_name }}</router-link>
 					</li>
 				</ul>
 			</div>

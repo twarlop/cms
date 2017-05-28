@@ -9,12 +9,12 @@ export default [
 
         children: [
             {
-                path: '/admin/data/:id/fields',
+                path: '/admin/data/:table/fields',
                 name: 'fields',
                 component: require('./../components/Data/Fields.vue'),
                 props: (route) => {
                     return {
-                        table: store.getters['data/tableById'](_.toInteger(route.params.id)),
+                        table: store.getters['data/tableById'](_.toInteger(route.params.table)),
                     }
                 },
             },
