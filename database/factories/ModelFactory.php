@@ -44,12 +44,15 @@ $factory->define(CoreTable::class, function(Faker\Generator $faker){
 });
 
 $factory->define(CoreField::class, function(Faker\Generator $faker){
+
+    $types = ['text', 'textarea', 'number', 'price', 'date', 'datetime', 'link'];
+
     $name = $faker->name;
     return [
         'field_name' => $name,
         'field_slug' => str_slug($name),
         'table_id' => rand(1, 10),
-        'field_type' => array_rand(['text', 'textarea', 'number', 'price', 'date', 'datetime', 'link'], 1),
+        'field_type' => $types[array_rand($types, 1)],
         'field_settings' => '{}',
     ];
 });
