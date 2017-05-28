@@ -1,4 +1,4 @@
-import data from "../../api/data";
+import api from "../../api";
 
 const state = {
 
@@ -73,7 +73,7 @@ const actions = {
 
     LOAD_GROUPS({commit})
     {
-        return data.groups.index().then(({data}) => {
+        return axios(api.GROUPS).then(({data}) => {
             commit('RECEIVE_GROUPS', {
                 groups: data
             })
@@ -82,7 +82,7 @@ const actions = {
 
     LOAD_TABLES({commit})
     {
-        return data.tables.index().then(({data}) => {
+        return axios(api.TABLES).then(({data}) => {
             commit('RECEIVE_TABLES', {
                 tables: data
             })
@@ -91,7 +91,7 @@ const actions = {
 
     LOAD_FIELDS({commit})
     {
-        return data.fields.index().then(({data}) => {
+        return axios(api.FIELDS).then(({data}) => {
             commit('RECEIVE_FIELDS', {
                 fields: data
             })
