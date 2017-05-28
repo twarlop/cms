@@ -1,20 +1,26 @@
 <template>
 
-	<div>
+	<div uk-grid>
 
-		<div v-for="group in groups">
+		<div class="uk-width-auto uk-card uk-card-default">
+			<div v-for="group in groups">
 
-			<h2 @click="editGroup(group)">{{ group.group_name }}</h2>
+				<h2 @click="editGroup(group)">{{ group.group_name }}</h2>
 
-			<ul>
-				<li v-for="table in tablesByGroup(group)"><router-link :to="{name: 'fields', params:{id: table.id}}">{{ table.table_name }}</router-link></li>
-			</ul>
+				<ul class="uk-nav uk-nav-default">
+					<li v-for="table in tablesByGroup(group)">
+						<router-link :to="{name: 'fields', params:{id: table.id}}">{{ table.table_name }}</router-link>
+					</li>
+				</ul>
+			</div>
+
+			<table-group ref="groupEditor"></table-group>
+
 		</div>
 
-		<table-group ref="groupEditor"></table-group>
-
-		<router-view></router-view>
-
+		<div class="uk-width-expand">
+			<router-view></router-view>
+		</div>
 	</div>
 
 </template>
