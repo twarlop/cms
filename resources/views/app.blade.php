@@ -28,7 +28,7 @@
 
 	</section>
 
-	<div v-if="booted" id="app-container" class="uk-animation-fade uk-animation-fast">
+	<div v-if="booted" id="app-container" class="uk-animation-fade uk-animation-fast" uk-height-viewport>
 
 		<nav class="uk-navbar-container" uk-navbar="mode: click">
 
@@ -61,7 +61,7 @@
 			</div>
 		</nav>
 
-		<router-view></router-view>
+		<router-view class="uk-height-1-1"></router-view>
 	</div>
 
 </div>
