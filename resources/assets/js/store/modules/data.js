@@ -1,3 +1,5 @@
+import data from "../../api/data";
+
 const state = {
 
     groups:[],
@@ -7,7 +9,6 @@ const state = {
     fields: [],
 
 };
-
 
 const getters = {
     groups:(state) =>
@@ -41,7 +42,13 @@ const getters = {
         return state.fields.filter((field) => {
             return field.table_id === table.id;
         });
-    }
+    },
+
+    fieldById:(state, getters) => (id) => {
+        return state.fields.find((field) => {
+            return field.id === id;
+        });
+    },
 };
 
 
@@ -66,7 +73,7 @@ const actions = {
 
     LOAD_GROUPS({commit})
     {
-        return axios('/api/data/table-group').then(({data}) => {
+        return data.groups.index().then(({data}) => {
             commit('RECEIVE_GROUPS', {
                 groups: data
             })
@@ -75,7 +82,7 @@ const actions = {
 
     LOAD_TABLES({commit})
     {
-        return axios('/api/data/table').then(({data}) => {
+        return data.tables.index().then(({data}) => {
             commit('RECEIVE_TABLES', {
                 tables: data
             })
@@ -84,7 +91,7 @@ const actions = {
 
     LOAD_FIELDS({commit})
     {
-        return axios('/api/data/field').then(({data}) => {
+        return data.fields.index().then(({data}) => {
             commit('RECEIVE_FIELDS', {
                 fields: data
             })
