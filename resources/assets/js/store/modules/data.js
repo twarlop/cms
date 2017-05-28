@@ -58,6 +58,24 @@ const mutations = {
         state.groups = groups;
     },
 
+    SAVED_GROUP(state, {group})
+    {
+        let groups = state.groups.filter((item) => {
+            return item.id !== group.id
+        });
+
+        groups.push(group);
+
+        state.groups = groups;
+    },
+
+    DELETE_GROUP(state, {group})
+    {
+        state.groups = state.groups.filter((item) => {
+            return group.id !== item.id;
+        });
+    },
+
     RECEIVE_TABLES(state, {tables})
     {
         state.tables = tables;

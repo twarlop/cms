@@ -17,6 +17,10 @@ class TableGroupController extends Controller
         $this->validate($request, [
             'group_name' => 'required'
         ]);
+
+        return CoreTableGroup::create($request->only([
+            'group_name'
+        ]));
     }
 
     public function update($id, Request $request)
@@ -24,6 +28,18 @@ class TableGroupController extends Controller
         $this->validate($request, [
             'group_name' => 'required',
         ]);
+
+        $group = CoreTableGroup::find($id);
+        $group->fill($request->only(['group_name']));
+        $group->save();
+
+        return $group;
+    }
+
+    public function destroy($id)
+    {
+        $group = CoreTableGroup::find($id);
+        $group->delete();
     }
 
 }

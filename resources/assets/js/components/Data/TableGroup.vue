@@ -31,6 +31,7 @@
 <script>
 
     import Vue from "vue";
+    import api from "../../api";
 
     let defaults = {
         id: false,
@@ -72,9 +73,10 @@
 
             submit()
             {
-                this.form.submit('/api/data/table-group')
+                this.form.submit(api.GROUPS)
                     .then(({data}) => {
                         this.hide();
+                        this.$store.commit('data/SAVED_GROUP', {group: data})
                     })
                     .catch(() => {});
             }

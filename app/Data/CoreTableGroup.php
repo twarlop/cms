@@ -11,4 +11,8 @@ class CoreTableGroup extends Model
         'group_name' => 'string',
     ];
 
+    protected $fillable  = [
+        'group_name'
+    ];
+
 }
