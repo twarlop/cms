@@ -5,7 +5,11 @@
 		<div class="uk-width-auto uk-card uk-card-default">
 			<div v-for="group in groups">
 
-				<h2 @click="editGroup(group)">{{ group.group_name }}<span @click.stop="deleteGroup(group)" uk-icon="icon: trash"></span></h2>
+				<h3>
+					{{ group.group_name }}
+					<span @click.stop="editGroup(group)" uk-icon="icon: pencil"></span>
+					<span @click.stop="deleteGroup(group)" uk-icon="icon: trash"></span>
+				</h3>
 
 				<ul class="uk-nav uk-nav-default">
 					<li v-for="table in tablesByGroup(group)">
