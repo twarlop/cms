@@ -28,7 +28,7 @@
 
 	</section>
 
-	<div v-if="booted" id="app-container" class="uk-animation-fade uk-animation-fast" uk-height-viewport>
+	<div v-if="booted" id="app-container" class="uk-animation-fade uk-animation-fast uk-offcanvas-content" uk-height-viewport>
 
 		<nav class="uk-navbar-container" uk-navbar="mode: click">
 

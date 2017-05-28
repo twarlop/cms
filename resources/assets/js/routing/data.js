@@ -17,6 +17,20 @@ export default [
                         table: store.getters['data/tableById'](_.toInteger(route.params.table)),
                     }
                 },
+
+                children: [
+                    {
+                        path: '/admin/data/:table/fields/:field',
+                        name: 'field',
+                        component: require('./../components/Data/Field.vue'),
+                        props: (route) => {
+                            return {
+                                table: store.getters['data/tableById'](_.toInteger(route.params.table)),
+                                field: store.getters['data/fieldById'](_.toInteger(route.params.field))
+                            }
+                        },
+                    }
+                ]
             },
         ]
     },

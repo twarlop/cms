@@ -11,7 +11,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr v-for="field in fieldsByTable(table)">
+			<tr v-for="field in fieldsByTable(table)" @click="goTo(table, field)">
 				<td>{{ field.field_name }}</td>
 				<td>{{ field.field_type }}</td>
 			</tr>
@@ -40,6 +40,19 @@
 		    'fieldsByTable',
 			'tableById',
 		]),
+
+		methods: {
+	        goTo(table, field)
+			{
+			    return this.$router.push({
+					name :'field',
+					params: {
+						table: table.id,
+						field: field.id
+					}
+			    });
+			}
+		}
 	}
 
 </script>
