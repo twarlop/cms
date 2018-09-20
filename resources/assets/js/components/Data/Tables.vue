@@ -3,20 +3,23 @@
 	<div uk-grid>
 
 		<div class="uk-width-auto uk-card uk-card-default">
-			<div v-for="group in groups">
 
-				<h3>
-					{{ group.group_name }}
-					<span @click.stop="editGroup(group)" uk-icon="icon: pencil"></span>
-					<span @click.stop="deleteGroup(group)" uk-icon="icon: trash"></span>
-				</h3>
+			<draggable v-model="groups">
+				<div v-for="group in groups">
 
-				<ul class="uk-nav uk-nav-default">
-					<li v-for="table in tablesByGroup(group)">
-						<router-link :to="{name: 'fields', params:{table: table.id}}">{{ table.table_name }}</router-link>
-					</li>
-				</ul>
-			</div>
+					<h3>
+						{{ group.group_name }}
+						<span @click.stop="editGroup(group)" uk-icon="icon: pencil"></span>
+						<span @click.stop="deleteGroup(group)" uk-icon="icon: trash"></span>
+					</h3>
+
+					<draggable v-model="groupedTables[group.id]" class="uk-nav uk-nav-default">
+						<div v-for="table in groupedTables[group.id]">
+							<router-link :to="{name: 'fields', params:{table: table.id}}">{{ table.table_name }}</router-link>
+						</div>
+					</draggable>
+				</div>
+			</draggable>
 
 			<table-group ref="groupEditor"></table-group>
 
@@ -34,12 +37,15 @@
     import Vue from "vue";
     import {mapGetters} from "vuex";
 
+    import draggable from 'vuedraggable'
+
     import tableGroup from "./TableGroup.vue";
     import api from "../../api";
 
     export default Vue.component('tables', {
 
         components: {
+            draggable,
             tableGroup
         },
 
@@ -52,6 +58,7 @@
 
 		computed: Object.assign({}, mapGetters('data', [
             'groups',
+			'groupedTables',
 			'tablesByGroup'
         ])),
 

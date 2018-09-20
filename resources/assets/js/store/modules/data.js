@@ -21,6 +21,23 @@ const getters = {
         return state.tables;
     },
 
+    groupedTables:(state) =>
+    {
+        let result = {};
+
+        state.tables.forEach((table) => {
+
+            if(!result[table.group_id])
+            {
+                result[table.group_id] = [];
+            }
+
+            result[table.group_id].push(table);
+        });
+
+        return result;
+    },
+
     tableById:(state, getters) => (id) => {
         return state.tables.find((table) => {
             return table.id === id;
